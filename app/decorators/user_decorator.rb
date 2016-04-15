@@ -36,4 +36,13 @@ UserDecorator = Struct.new(:user) do
   def mobile_change_requested?
     user.unconfirmed_mobile.present? && user.mobile.present?
   end
+
+  def qrcode
+    issuer = Rails.application.class.parent_name
+    options = {issuer: issuer}
+    url = user.provisioning_uri(nil, options)
+    puts "XXXXXXX URL = " + url
+    qrcode = RQRCode::QRCode.new(url)
+    qrcode.as_png(size: 166).to_data_url
+  end
 end

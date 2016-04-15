@@ -38,6 +38,7 @@ gem 'two_factor_authentication', git: 'https://github.com/Houdini/two_factor_aut
 gem 'uglifier', '>= 1.3.0'
 gem 'whenever', require: false
 gem 'activerecord-session_store', '1.0.0.pre'
+gem 'rqrcode'
 
 group :deploy do
   gem 'berkshelf'

@@ -12,6 +12,8 @@ class Devise::TwoFactorAuthenticationController < DeviseController
   end
 
   def show
+    @qrcode = UserDecorator.new(current_user).qrcode
+
     if user_fully_authenticated? && current_user.unconfirmed_mobile.blank?
       redirect_to dashboard_index_url
     end

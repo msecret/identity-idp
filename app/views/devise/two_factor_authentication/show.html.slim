@@ -17,3 +17,5 @@
         = label_tag 'code', raw('<abbr title="required">*</abbr> ') + t('upaya.forms.two_factor.code')
         = text_field_tag :code, '', required: true, class: 'gets-focus'
         = submit_tag 'Submit', class: 'usa-button'
+        p If you want to use Google Authenticator, scan the QR Code below with your phone:
+        = image_tag @qrcode
