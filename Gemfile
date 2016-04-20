@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '~> 4.2.6'
+
 gem 'attr_encrypted'
 gem 'autoprefixer-rails', '~> 5.2'
 gem 'browserify-rails'
@@ -19,6 +20,7 @@ gem 'newrelic_rpm'
 gem 'omniauth-saml', github: 'amoose/omniauth-saml', branch: 'feature/internal_idp'
 gem 'phony_rails', '~> 0.13.1'
 gem 'pg'
+gem 'puma'
 gem 'pundit'
 gem 'valid_email'
 gem 'rack-attack'
@@ -39,6 +41,7 @@ gem 'two_factor_authentication', git: 'https://github.com/Houdini/two_factor_aut
 gem 'uglifier', '>= 1.3.0'
 gem 'whenever', require: false
 gem 'activerecord-session_store', '1.0.0.pre'
+gem 'sidekiq'
 
 group :deploy do
   gem 'berkshelf'
@@ -51,7 +54,7 @@ group :deploy do
   gem 'knife-ec2'
   gem 'knife-solo', github: 'matschaffer/knife-solo', submodules: true
   gem 'knife-solo_data_bag'
-  gem 'puma'
+
 end
 
 group :development do
@@ -69,6 +72,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
