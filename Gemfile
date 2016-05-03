@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '~> 4.2.6'
-
 gem 'attr_encrypted'
 gem 'autoprefixer-rails', '~> 5.2'
 gem 'browserify-rails'
@@ -47,6 +46,12 @@ group :deploy do
   gem 'capistrano-rails' # , '~> 1.1', require: false
   gem 'capistrano-rbenv' # , '~> 2.0', require: false
   gem 'capistrano-sidekiq'
+  gem 'capistrano-resque' # , '~> 0.2.1', require: false
+  gem 'chef', '~> 12.0.1'
+  gem 'knife-ec2'
+  gem 'knife-solo', github: 'matschaffer/knife-solo', submodules: true
+  gem 'knife-solo_data_bag'
+  gem 'puma'
 end
 
 group :development do
