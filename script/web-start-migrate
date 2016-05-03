@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+bundle exec rake cf:on_first_instance db:migrate
+bundle exec puma --config config/puma.rb
+
+# rpec
+bundle exec rspec --require rails_helper

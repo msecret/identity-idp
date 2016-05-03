@@ -43,6 +43,7 @@ Vagrantfile
 /log/*
 /private_certs/*
 /public/system
+/public/assets/*
 /spec/tmp
 /test
 /tmp/*
