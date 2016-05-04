@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+set -x
+
+echo 'Loading migrations if necessary:'
+echo '-> bundle exec rake cf:on_first_instance db:migrate'
+bundle exec rake cf:on_first_instance db:migrate
+echo 'Loading app server:'
+echo '-> bundle exec puma --config config/puma.rb'
+bundle exec puma --config config/puma.rb

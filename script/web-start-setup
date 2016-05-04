@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+set -x
+
+echo 'Initial DB setup...'
+echo '-> bundle exec rake cf:on_first_instance db:setup'
+bundle exec rake cf:on_first_instance db:setup
+echo 'Loading app server...'
+echo '-> bundle exec puma --config config/puma.rb'
+bundle exec puma --config config/puma.rb

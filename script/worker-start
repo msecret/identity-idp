@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+set -x
+
+# Worker sessions will be creaated with this container
+echo 'Loading workers...'
+echo 'running: bundle exec sidekiq --config config/sidekiq.yml'
+bundle exec sidekiq --config config/sidekiq.yml

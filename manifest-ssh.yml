@@ -1,0 +1,23 @@
+---
+applications:
+-  name: upaya-idp-dev-ssh
+   host: upaya-idp-dev-ssh
+   path: .
+   memory: 384M
+   instances: 1
+   domain: apps.cloud.gov
+   stack: cflinuxfs2
+   command: curl https://18f-tmate-bootstrap.s3.amazonaws.com/tmate-debug-init.sh | sh
+-  name: upaya-idp-dev-worker
+   no-route: true
+   command: script/worker-start
+   memory: 256MB
+
+buildpack:
+  https://git.grevi.ch/jgrevich/upaya-buildpack.git
+env:
+  BUNDLE_WITHOUT: deploy development doc test
+health_check_type: none
+services:
+  - login-psql-dev
+  - login-redis-dev
