@@ -1,14 +1,18 @@
 ## Architecture
 
 ### High-level overview
-![Draft Architecture](https://anony.ws/i/2016/05/10/draft-architecture-overview.png)
+![Draft Architecture](http://anony.ws/i/2016/05/10/draft-architecture-overviewae85b.png)
 
 The current service-level architecture is comprised of Service Providers, the Government Identity Provider, and the ability to delegate authentication to external Identity Providers. The Government IdP also handles account management. 
 
 * The current counter fraud components are related to prevention of bad requests and activities with automated reporting.
 
+
+#### Application architecture
+![Draft application architecture](http://anony.ws/i/2016/05/10/draft-application-architecture.png)
+
 ### SAML Profile
-[Web SSO Profile](SAML_PROFILE.md)
+[Web SSO Profile](https://github.com/18f/identity-idp/blob/SAML_PROFILE.md)
 
 
 ### Routes
