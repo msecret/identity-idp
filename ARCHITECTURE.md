@@ -12,7 +12,7 @@ The current service-level architecture is comprised of Service Providers, the Go
 ![Draft application architecture](http://anony.ws/i/2016/05/10/draft-application-architecture.png)
 
 ### SAML Profile
-[Web SSO Profile](https://github.com/18f/identity-idp/blob/SAML_PROFILE.md)
+[Web SSO Profile](SAML_PROFILE.md)
 
 
 ### Routes
