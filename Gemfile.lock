@@ -533,7 +533,7 @@ DEPENDENCIES
   omniauth-saml!
   overcommit
   pg
-  phony_rails (~> 0.13.1)
+  phony_rails
   poltergeist
   pry-byebug
   pundit
@@ -571,4 +571,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.12.2
+   1.12.3

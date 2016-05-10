@@ -51,22 +51,6 @@ feature 'Two Factor Authentication', devise: true do
         expect(page).to have_content invalid_mobile_message
       end
 
-      scenario 'user enters an invalid number with plus sign and no digits' do
-        sign_in_user
-        fill_in 'Mobile', with: '+invalid'
-        click_button 'Submit'
-
-        expect(page).to have_content invalid_mobile_message
-      end
-
-      scenario 'user enters an invalid number with digits' do
-        sign_in_user
-        fill_in 'Mobile', with: '55555512122'
-        click_button 'Submit'
-
-        expect(page).to have_content invalid_mobile_message
-      end
-
       scenario 'user enters a valid number' do
         user = sign_in_user
         fill_in 'Mobile', with: '555-555-1212'
@@ -80,6 +64,66 @@ feature 'Two Factor Authentication', devise: true do
   end # describe 'When the user has not set a preferred method'
 
   describe 'When the user has set a preferred method' do
+    describe 'Using Mobile' do
+      # Scenario: User with mobile 2fa is prompted for otp
+      #   Given I exist as a user
+      #   And I am not signed in and have mobile 2fa enabled
+      #   When I sign in
+      #   Then an OTP is sent to my mobile
+      #   And I am prompted to enter it
+      context 'user is prompted for otp via mobile only', sms: true do
+        before do
+          reset_job_queues
+          @user = create(:user, :signed_up)
+          reset_email
+          signin(@user.email, @user.password)
+        end
+
+        it 'lets the user know they are signed in' do
+          expect(page).to have_content t('devise.sessions.signed_in')
+        end
+
+        it 'asks the user to enter an OTP' do
+          expect(page).
+            to have_content t('devise.two_factor_authentication.header_text')
+        end
+
+        it 'does not send an OTP via email' do
+          expect(last_email).to_not have_content('one-time password')
+        end
+
+        it 'does not allow user to access OTP setup page after entering valid OTP' do
+          fill_in 'code', with: @user.otp_code
+          click_button 'Submit'
+          visit users_otp_path
+
+          expect(current_path).to eq dashboard_index_path
+        end
+
+        it 'does not allow user to access OTP prompt page after entering valid OTP' do
+          fill_in 'code', with: @user.otp_code
+          click_button 'Submit'
+          visit user_two_factor_authentication_path
+
+          expect(current_path).to eq dashboard_index_path
+        end
+
+        it 'does not allow user to bypass entering OTP' do
+          visit edit_user_registration_path
+
+          expect(current_path).to eq user_two_factor_authentication_path
+          expect(page).to have_content t('devise.errors.messages.user_not_authenticated')
+        end
+
+        it 'displays an error message if the code field is empty', js: true do
+          fill_in 'code', with: ''
+          click_button 'Submit'
+
+          expect(page).to have_content('Please fill in all required fields')
+        end
+      end
+    end
+
     describe 'Using Mobile' do
       # Scenario: User with mobile 2fa can fully sign in with otp
       #   Given I exist as a user
@@ -126,26 +170,6 @@ feature 'Two Factor Authentication', devise: true do
       click_link 'request a new passcode'
 
       expect(page).to have_content I18n.t('devise.two_factor_authentication.user.new_otp_sent')
-    end
-
-    scenario 'user attempts to circumnavigate OTP setup' do
-      user = create(:user, :signed_up)
-      sign_in_user(user)
-      visit edit_user_registration_path
-
-      expect(page).to have_content I18n.t('devise.errors.messages.user_not_authenticated')
-    end
-
-    scenario 'user disables 2FA method' do
-      user = sign_in_and_2fa_user
-
-      user.update(mobile: nil, mobile_confirmed_at: nil)
-
-      visit dashboard_index_path
-
-      expect(current_path).to eq('/users/otp')
-      expect(page).to have_content I18n.t('devise.two_factor_authentication.otp_setup')
-      expect(page).to have_css('.alert')
     end
 
     scenario 'user enters OTP incorrectly 3 times and is locked out for otp drift period' do
