@@ -18,7 +18,7 @@ gem 'puma'
 gem 'pundit'
 gem 'valid_email'
 gem 'rack-attack'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'ruby-saml', github: 'amoose/ruby-saml'
 gem 'nokogiri-xmlsec-me-harder', '~> 0.9.1', require: 'xmlsec'
 gem 'saml_idp', github: '18F/saml_idp'
