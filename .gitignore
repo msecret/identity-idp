@@ -43,6 +43,7 @@ Vagrantfile
 /kitchen/cookbooks
 /log/*
 /private_certs/*
+/public/assets
 /public/system
 /spec/tmp
 /test
