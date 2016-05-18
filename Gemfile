@@ -35,6 +35,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'whenever', require: false
 gem 'activerecord-session_store', '1.0.0.pre'
 
+group :cloudFoundry do
+  gem 'cf-app-utils'
+end
+
 group :deploy do
   gem 'capistrano' # , '~> 3.4'
   gem 'capistrano-rails' # , '~> 1.1', require: false

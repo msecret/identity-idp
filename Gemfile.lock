@@ -144,6 +144,7 @@ GEM
     capybara-screenshot (1.0.12)
       capybara (>= 1.0, < 3)
       launchy
+    cf-app-utils (0.6)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -515,6 +516,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano-sidekiq
   capybara-screenshot
+  cf-app-utils
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   database_cleaner
