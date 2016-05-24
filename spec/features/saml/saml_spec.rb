@@ -279,17 +279,15 @@ feature 'saml api', devise: true, sms: true do
 
       it 'completes logout at IdP' do
         allow_any_instance_of(ServiceProvider).to receive(:metadata).and_return(
-          {
-             service_provider: "https://rp1.serviceprovider.com/auth/saml/metadata",
-             authn_context: "http://idmanagement.gov/ns/assurance/loa/1",
-             last_authenticated_at: "2016-05-24 16:29:25",
-             user_id: 1,
-             created_at: "2016-05-24 16:29:25",
-             updated_at: "2016-05-24 16:29:25",
-             session_index: 1,
-             session_uuid: "_7672a58d-eee4-42fd-8e15-1c04d1ef3340",
-             quiz_started: false
-          })
+          service_provider: 'https://rp1.serviceprovider.com/auth/saml/metadata',
+          authn_context: 'http://idmanagement.gov/ns/assurance/loa/1',
+          last_authenticated_at: '2016-05-24 16:29:25',
+          user_id: 1,
+          created_at: '2016-05-24 16:29:25',
+          updated_at: '2016-05-24 16:29:25',
+          session_index: 1,
+          session_uuid: '_7672a58d-eee4-42fd-8e15-1c04d1ef3340',
+          quiz_started: false)
 
         visit destroy_user_session_url
 
