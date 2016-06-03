@@ -42,7 +42,7 @@ module SamlAuthHelper
   end
 
   def saml_cert
-    @saml_cert ||= File.read("#{Rails.root}/certs/saml_cert.crt")
+    @saml_cert ||= File.read("#{Rails.root}/certs/saml.crt")
   end
 
   # generates a SAML response and returns a parsed Nokogiri XML document

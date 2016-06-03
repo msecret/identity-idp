@@ -31,7 +31,7 @@ class ServiceProvider
   def cert
     return if host_attributes['cert'].blank?
 
-    cert_dir = "#{Rails.root}/certs/"
+    cert_dir = "#{Rails.root}/certs/sp/"
 
     @cert ||= File.read("#{cert_dir}#{host_attributes['cert']}.crt")
   end
