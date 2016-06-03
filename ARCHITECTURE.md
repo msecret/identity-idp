@@ -9,7 +9,7 @@ The current service-level architecture is comprised of Service Providers, the Go
 
 
 #### Application architecture
-![Draft application architecture](http://anony.ws/i/2016/05/10/draft-application-architecture.png)
+![Draft application architecture](http://anony.ws/i/2016/06/03/draft-application-architecture.png)
 
 ### SAML Profile
 [Web SSO Profile](SAML_PROFILE.md)
