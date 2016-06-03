@@ -1,15 +1,4 @@
 GIT
-  remote: https://github.com/Houdini/two_factor_authentication.git
-  revision: 675f651929b7a09bb59169bf4206a10895c2b9d9
-  specs:
-    two_factor_authentication (1.1.5)
-      devise
-      encryptor
-      rails (>= 3.1.1)
-      randexp
-      rotp
-
-GIT
   remote: https://github.com/amoose/omniauth-saml.git
   revision: 06c019e451db4eb769bf40fcba2b092091fe7d4a
   branch: feature/internal_idp
@@ -35,6 +24,18 @@ GIT
       httparty
       nokogiri
       uuid
+
+GIT
+  remote: https://github.com/sbc100/two_factor_authentication.git
+  revision: 12ed38a98d02b173db1aef08717de11191b56311
+  branch: direct_codes
+  specs:
+    two_factor_authentication (1.1.5)
+      devise
+      encryptor
+      rails (>= 3.1.1)
+      randexp
+      rotp
 
 GEM
   remote: https://rubygems.org/

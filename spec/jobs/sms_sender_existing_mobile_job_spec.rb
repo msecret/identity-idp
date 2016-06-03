@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe SmsSenderExistingMobileJob, sms: true do
-  let(:user) { build_stubbed(:user, :with_mobile, otp_secret_key: 'lzmh6ekrnc5i6aaq') }
+  let(:user) { build_stubbed(:user, :with_mobile) }
 
   describe '.perform' do
     it 'sends existing mobile message to user.mobile' do

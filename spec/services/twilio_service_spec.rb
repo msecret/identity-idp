@@ -25,7 +25,7 @@ describe TwilioService do
   end
 
   describe 'performance testing mode' do
-    let(:user) { build_stubbed(:user, otp_secret_key: 'lzmh6ekrnc5i6aaq') }
+    let(:user) { build_stubbed(:user) }
 
     it 'uses NullTwilioClient when pt_mode is on' do
       expect(FeatureManagement).to receive(:pt_mode?).and_return(true)

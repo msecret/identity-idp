@@ -11,7 +11,7 @@ class SmsSenderOtpJob < ActiveJob::Base
   def otp(twilio_service, user)
     twilio_service.send_sms(
       to: target_number_for(user),
-      body: otp_message(user.otp_code)
+      body: otp_message(user.direct_otp)
     )
   end
 
