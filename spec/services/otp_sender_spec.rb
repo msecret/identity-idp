@@ -4,7 +4,7 @@ describe UserOtpSender do
   describe '#send_otp' do
     context 'when user is two_factor_enabled and does not have unconfirmed_mobile' do
       it 'sends OTP to mobile' do
-        user = build(:user)
+        user = build_stubbed(:user)
 
         allow(user).to receive(:two_factor_enabled?).and_return(true)
 
